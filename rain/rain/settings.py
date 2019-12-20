@@ -20,6 +20,7 @@ TEMPLATE_DIR_FEEDBACK=os.path.join(BASE_DIR,'feedback/templates')
 TEMPLATE_DIR_COMPLAINTS=os.path.join(BASE_DIR,'complaints/templates')
 TEMPLATE_DIR_STATS=os.path.join(BASE_DIR,'stats/templates')
 TEMPLATE_DIR_HOME=os.path.join(BASE_DIR,'home/templates')
+TEMPLATE_DIR_FIRSTAPP=os.path.join(BASE_DIR,'firstapp/templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'feedback',
     'stats',
     'home',
+    'firstapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,7 +67,7 @@ ROOT_URLCONF = 'rain.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR_ACCOUNTS,TEMPLATE_DIR_CHATS,TEMPLATE_DIR_FEEDBACK,TEMPLATE_DIR_STATS,TEMPLATE_DIR_COMPLAINTS,TEMPLATE_DIR_HOME,],
+        'DIRS': [TEMPLATE_DIR_ACCOUNTS,TEMPLATE_DIR_CHATS,TEMPLATE_DIR_FEEDBACK,TEMPLATE_DIR_STATS,TEMPLATE_DIR_COMPLAINTS,TEMPLATE_DIR_HOME,TEMPLATE_DIR_FIRSTAPP],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
