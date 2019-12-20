@@ -8,10 +8,7 @@ class ComplaintForm(forms.ModelForm):
         fields = (
             'category',
             'description',
-            'article',
             'image',
             'state',
-            'status',
-            'date',
             'social_media',
         )

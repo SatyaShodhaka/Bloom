@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+{% endblock %}
+
+{% block body %}
+  <header class="masthead" style="background-image: url('{{ post.image.url }}');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1><b>{{ post.title }}</b></h1>
+            <h2 class="subheading">{{ post.description }}</h2>
+            <span class="meta">Posted by
+              <a href="#">{{ post.user.username}}</a>
+              on {{ post.date }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <h1 class="section-heading">{{ post.title }}</h1>
+            <br>
+          <p>{{ post.article }}</p>
+
+      
+        </div>
+      </div>
+    </div>
+  </article>
+  <hr>
+  
+  <!-- <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" style="background-color: #030303;">Report</button> -->
+                <hr class="my-4">
+
+  <script>
+      $(document).ready( function () {
+          $("#header").remove();;
+});
+  </script>
+{% endblock %}

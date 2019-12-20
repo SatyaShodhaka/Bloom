@@ -4,6 +4,7 @@ from django.shortcuts import render,HttpResponseRedirect,redirect,get_object_or_
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import authenticate, login
+from complaints.models import Complaint
 # from accounts.models import UserProfile
 from django.core.mail import send_mail
 from .models import Feedback
@@ -19,4 +20,6 @@ def view_home(request):
             p.save()
         return redirect('/')
     else:
-        return render(request,'base.html')
+        posts = Complaint.objects.all()
+        args = {'posts':posts}
+        return render(request,'base.html',args)
