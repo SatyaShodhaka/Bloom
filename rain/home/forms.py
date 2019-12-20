@@ -1,14 +1,13 @@
 from django import forms
 from django.db import models
 from .models import Feedback
-
-class PostForm(forms.ModelForm):
-    image = forms.ImageField(required=False)
+class FeedbackForm(forms.ModelForm):
+    mail = forms.EmailField(required=True)
     class Meta:
-        model = Post
+        model = Feedback
         fields = (
-            'title',
-            'description',
-            'article',
-            'image',
+            'phone_no',
+            'name',
+            'mail',
+            'message',
         )
