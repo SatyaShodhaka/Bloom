@@ -139,10 +139,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL='/account/'
+LOGIN_REDIRECT_URL='/account/validate'
 
 LOGIN_URL = '/account/login'
 
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'rain/media')
+
+
+
+EMAIL_BACKEND= 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_USE_TLS=True
+EMAIL_PORT=587
+EMAIL_HOST_USER='peddi.vinil@gmail.com'
+EMAIL_HOST_PASSWORD='stapity1234'
+
+GOOGLE_RECAPTCHA_SECRET_KEY='6Ldc-sgUAAAAADHG94Z-BckFKpzJ1jnLu9u1MvNC'

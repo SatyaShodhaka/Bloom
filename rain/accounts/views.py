@@ -21,8 +21,11 @@ def register(request):
 
 @login_required
 def profile(request):
-    args = {'user': request.user}
-    return render(request,'accounts/profile.html', args)
+    if request.method == "POST":
+        return redirect('/')
+    else:    
+        args = {'user': request.user}
+        return render(request,'accounts/validate.html', args)
 
 @login_required
 def edit_profile(request):
@@ -74,3 +77,24 @@ def admin_login(request):
         else:
             return redirect('/')
 
+def validation(request):
+    if request.method=='POST':
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        params = {
+            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+        }
+        verify_rs = requests.get(url, params=params, verify=True)
+        verify_rs = verify_rs.json()
+        status = verify_rs.get("success", False)
+        if not status:
+            raise forms.ValidationError(
+                _('Captcha Validation Failed.'),
+                code='invalid',
+            )
+            return redirect('login')
+        if status:
+            return redirect('/account')
+    else:
+        return render(request,'accounts/validate.html')

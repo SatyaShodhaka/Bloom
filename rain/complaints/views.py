@@ -50,10 +50,27 @@ def admin_complaint(request):
         return render(request,'complaints/view.html',args)
 
 def full_complaint(request,id):
-	post= get_object_or_404(Complaint, id=id)
-    # for e in post:
-    #     e.image
-	return render(request, 'complaints/post.html', {'post':post})
+    r = id
+    if request.method == "POST":
+        sends = Complaint.objects.all().filter(id = r)
+        for e in sends:
+            posts = User.objects.all().filter(username = e)
+        ls = list()
+        for a in posts:
+                ls.append(a.email)
+        p = request.user.email
+        ls.append(p)
+        msg = str(request.POST.get('description'))
+        print(msg)
+        send_mail (
+                'Confirmation mail',
+                msg,
+                'peddi.vinil@gmail.com',
+                ls,)
+        return redirect('/complaints/view/')
+    else:
+	    post= get_object_or_404(Complaint, id=id)
+	    return render(request, 'complaints/post.html', {'post':post})
 
 
 def feedbacks(request):

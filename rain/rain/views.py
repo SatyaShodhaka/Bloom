@@ -2,8 +2,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render,HttpResponse,redirect 
 
 def login_redirect(request):
-    # return redirect('/<path name redirected after login>')
-    return 0 #dummy return
+    return redirect('account/validate')
 
 def about(request):
     return render(request,'accounts/about.html')
