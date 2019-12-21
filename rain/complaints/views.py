@@ -7,12 +7,14 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import authenticate, login
 from accounts.models import UserProfile
 from django.core.mail import send_mail
+from home.models import Feedback
 
 def view_complaint(request):
-    posts = UserProfile.objects.all().filter(user_id = request.user.id)
-    for e in posts:
+    posts = Complaint.objects.all().filter()
+    admins = UserProfile.objects.all().filter(user_id = request.user.id)
+    for e in admins:
         if e.is_admin == False:
-            return render(request,'complaints/create.html')#mention not a staff member
+            return render(request,'complaints/create.html')
         else:
             form = ComplaintForm()
             posts = Complaint.objects.all().order_by('date').filter(status = True)
@@ -46,3 +48,19 @@ def admin_complaint(request):
         posts = Complaint.objects.order_by('date')
         args = {'forms':form,'posts':posts}
         return render(request,'complaints/view.html',args)
+
+def full_complaint(request,id):
+	post= get_object_or_404(Complaint, id=id)
+    # for e in post:
+    #     e.image
+	return render(request, 'complaints/post.html', {'post':post})
+
+
+def feedbacks(request):
+    admins = UserProfile.objects.all().filter(user_id = request.user.id)
+    for e in admins:
+        if e.is_admin == False:
+            return render(request,'')
+        else:
+            posts = Feedback.objects.all()
+            return render(request,'complaints/feed.html',{'posts':posts})

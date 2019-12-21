@@ -18,5 +18,5 @@ class Complaint(models.Model):
     def __str__(self):
         return self.user.username #should be changed
 
-    # def get_absolute_url(self):
-    #     return reverse('post-detail', kwargs={'id': self.id})
+    def get_absolute_url(self):
+       return reverse('complaint-detail', kwargs={'id': self.id})

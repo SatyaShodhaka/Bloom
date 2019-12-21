@@ -73,3 +73,4 @@ def admin_login(request):
            return redirect('/complaints/view/')
         else:
             return redirect('/')
+
