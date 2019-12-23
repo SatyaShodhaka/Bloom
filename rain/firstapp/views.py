@@ -3,12 +3,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from firstapp.models import Client,Created_Rooms,Joined_Rooms
 from firstapp.forms import clientForm,Created_RoomsForm,Joined_RoomsForm
 from firstapp.forms import UserForm
+from django.contrib.auth.decorators import login_required
 # from django.template import RequestContext
 from django.contrib.auth import login,logout,authenticate
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-
+from accounts.models import UserProfile
 from firstapp.forms import UserProfileInfoForm
 
 # Create your views here.
@@ -126,7 +127,7 @@ def chat(request):
 
 def chat1(request):
     return render(request,'firstapp/caht1.html')
-
+@login_required
 def counsel(request):
     return render(request,'firstapp/counsel.html')
 

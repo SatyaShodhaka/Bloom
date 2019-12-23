@@ -53,6 +53,8 @@ def full_complaint(request,id):
     r = id
     if request.method == "POST":
         sends = Complaint.objects.all().filter(id = r)
+        tk = str(id)
+        tkr = '. The room number for counselling  is '+tk
         for e in sends:
             posts = User.objects.all().filter(username = e)
         ls = list()
@@ -64,7 +66,7 @@ def full_complaint(request,id):
         print(msg)
         send_mail (
                 'Confirmation mail',
-                msg,
+                msg+tkr,
                 'peddi.vinil@gmail.com',
                 ls,)
         return redirect('/complaints/view/')

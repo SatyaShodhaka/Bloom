@@ -3,6 +3,8 @@
 
 <title>Validate</title>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <style>
         #mainNav {
   padding-top: 0;
@@ -22,12 +24,8 @@
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div style="position: relative;left: 200px;text-align:center">
+    
+    <div style="position: relative;left: 200px;">
         
             <form action="?" method="POST">
                 {% csrf_token %}
@@ -37,10 +35,5 @@
               <input type="submit" value="Submit">
             </form>
     </div>
-    <script>
-      $(document).ready( function () {
-          $("#but").remove();;
-});
-  </script>
 
     {% endblock %}
